@@ -1,0 +1,17 @@
+
+version: "2.1"
+services:
+  nextcloud:
+    image: ghcr.io/linuxserver/nextcloud
+    container_name: ssn-nextcloud-01
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Australia/Perth
+      - UMASK=022
+    volumes:
+      - /srv/dev-disk-by-uuid-614b50f0-ff49-4f0d-b9e2-13fee156e08d/DATA/Servers/Configs/NextCloud:/config
+      - /srv/dev-disk-by-uuid-614b50f0-ff49-4f0d-b9e2-13fee156e08d/DATA/NextCloud:/data
+    ports:
+      - 5005:443
+    restart: unless-stopped 
